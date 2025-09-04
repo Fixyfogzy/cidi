@@ -82,36 +82,66 @@ const animateCounters = () => {
         });
     }
 
-    // 5. Testimonial slider functionality
-    const testimonialSlider = () => {
-        const testimonials = document.querySelectorAll('.testimonial');
-        let currentIndex = 0;
-        
-        // Initially show only the first testimonial on mobile
-        if (window.innerWidth < 768 && testimonials.length > 0) {
-            testimonials.forEach((testimonial, index) => {
-                if (index !== 0) {
-                    testimonial.style.display = 'none';
-                }
-            });
-            
-            // Auto-rotate testimonials on mobile
-            setInterval(() => {
-                testimonials[currentIndex].style.display = 'none';
-                currentIndex = (currentIndex + 1) % testimonials.length;
-                testimonials[currentIndex].style.display = 'block';
-            }, 5000);
-        } else {
-            // Make sure all testimonials are visible on desktop
-            testimonials.forEach(testimonial => {
-                testimonial.style.display = 'block';
-            });
-        }
-    };
-    
-    testimonialSlider();
-    window.addEventListener('resize', testimonialSlider);
+    // 5. Testimonial slider functionality (CSS Classes Version)
+let testimonialInterval = null;
 
+const testimonialSlider = () => {
+    const testimonialsContainer = document.querySelector('.testimonial-grid');
+    const testimonials = document.querySelectorAll('.testimonial');
+    let currentIndex = 0;
+    
+    // Clear any existing interval
+    if (testimonialInterval) {
+        clearInterval(testimonialInterval);
+        testimonialInterval = null;
+    }
+    
+    // Remove all slider classes first
+    testimonialsContainer.classList.remove('testimonial-slider');
+    testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active', 'inactive');
+    });
+    
+    // If on mobile and we have testimonials
+    if (window.innerWidth < 768 && testimonials.length > 1) {
+        // Add slider class to container
+        testimonialsContainer.classList.add('testimonial-slider');
+        
+        // Set up initial state
+        testimonials.forEach((testimonial, index) => {
+            if (index === 0) {
+                testimonial.classList.add('active');
+            } else {
+                testimonial.classList.add('inactive');
+            }
+        });
+        
+        // Auto-rotate testimonials on mobile
+        testimonialInterval = setInterval(() => {
+            // Remove active class from current testimonial
+            testimonials[currentIndex].classList.remove('active');
+            testimonials[currentIndex].classList.add('inactive');
+            
+            // Move to next testimonial
+            currentIndex = (currentIndex + 1) % testimonials.length;
+            
+            // Add active class to next testimonial
+            testimonials[currentIndex].classList.remove('inactive');
+            testimonials[currentIndex].classList.add('active');
+            
+        }, 5000);
+    }
+};
+
+// Initialize slider on load
+testimonialSlider();
+
+// Add resize event listener with debounce
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(testimonialSlider, 250);
+});
     // 6. Form validation for newsletter signup (if added later)
     const validateForm = (form) => {
         const email = form.querySelector('input[type="email"]');
@@ -173,3 +203,6 @@ const animateCounters = () => {
         });
     }
 });
+
+
+
