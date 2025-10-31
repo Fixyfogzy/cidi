@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - CIDI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --gold: #D6A21E;
+            --red: #C52A26;
+            --dark-gray: #333333;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+
+        .btn-gold:hover {
+            background-color: #c28f1a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(214, 162, 30, 0.3);
+        }
+
+        .btn-red {
+            background-color: var(--red);
+            color: var(--white);
+        }
+
+        .btn-red:hover {
+            background-color: #b02522;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(197, 42, 38, 0.3);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--gold);
+            font-size: 2.5rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--red);
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo a {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--red);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a.active {
+            color: var(--red);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-gray);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/about2.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Who We Are Section */
+        .who-we-are {
+            background-color: var(--white);
+        }
+
+        .who-we-are-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .who-we-are-content h2 {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .who-we-are-content p {
+            margin-bottom: 25px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            background-color: var(--light-gray);
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .mission-card, .vision-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-card h3, .vision-card h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .mission-card p, .vision-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .mission-icon, .vision-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Leadership Section */
+        .leadership {
+            background-color: var(--white);
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .leader-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .leader-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid var(--gold);
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leader-card h3 {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .leader-card .role {
+            color: var(--red);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .leader-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Programs Section */
+        .programs {
+            background-color: var(--light-gray);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .program-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.05);
+        }
+
+        .program-content {
+            padding: 25px;
+        }
+
+        .program-content h3 {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .program-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .program-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* Partners Section */
+        .partners {
+            background-color: var(--white);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .partner-logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--light-gray);
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--red);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gold);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 18px;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--red);
+            transform: translateY(-5px);
+        }
+
+        .footer-section i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .leadership-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 20px 0;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+              .social-icons a i {
+    color: var(--white) !important;
+    transition: var(--transition);
+
+}
+
+.social-icons a:hover i {
+    color: var(--white) !important;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons {
+  text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--gold);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-icons a i {
+    color: var(--white);
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+    position: relative;
+    left: 3px; /* 👈 nudges it slightly right */
+}
+
+.social-icons a:hover {
+    background-color: var(--red);
+    transform: translateY(-5px);
+}
+
+.leader-email {
+  color: var(--gold);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.leader-email i {
+  margin-right: 5px;
+}
+
+.no-data, .error-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error-message {
+  color: var(--red);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">CIDI</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>About CIDI</h1>
+                <p>Learn more about our mission, vision, and the team behind our initiatives</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section class="who-we-are section">
+        <div class="container">
+            <div class="who-we-are-content fade-in">
+                <h2>Who We Are</h2>
+                <p>Children Impact & Development Initiative (CIDI) is a non-profit organization dedicated to improving the lives of children through education, healthcare, and community support programs. Founded in 2015, we have been at the forefront of creating sustainable change in underserved communities.</p>
+                <p>Our team of dedicated professionals and volunteers work tirelessly to ensure that every child has access to opportunities for growth, development, and a brighter future. We believe that investing in children today creates a better tomorrow for everyone.</p>
+                <p>Through our various programs and initiatives, we have reached thousands of children across multiple communities, providing them with the tools and support they need to thrive.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision section">
+        <div class="container">
+            <div class="mission-vision-grid">
+                <div class="mission-card fade-in">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To empower children through quality education, healthcare, and community development programs that create sustainable change and break the cycle of poverty. We strive to provide every child with the opportunity to reach their full potential regardless of their background or circumstances.</p>
+                </div>
+                <div class="vision-card fade-in">
+                    <div class="vision-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>A world where every child has access to quality education, proper healthcare, and a supportive community that nurtures their growth and development. We envision communities where children are empowered to become leaders and change-makers in their own right.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership section">
+        <div class="container">
+            <h2 class="section-title">Our Leadership</h2>
+            <div class="leadership-grid">
+                <div class="leader-card fade-in">
+                    <div class="leader-image">
+                        <img src="images/leaders/ED.jpg" alt="Dr. Adetoun Dally">
+                    </div>
+                    <h3>Dr. Adetoun Dally</h3>
+                    <p class="role">Executive Director</p>
+                    <p>With over 15 years of experience in non-profit management, Sarah leads CIDI with passion and dedication.</p>
+                </div>
+                <div class="leader-card fade-in">
+                    <div class="leader-image">
+                        <img src="images/leaders/leader2.jpg" alt="Michael Chen">
+                    </div>
+                    <h3>Michael Chen</h3>
+                    <p class="role">Program Director</p>
+                    <p>Michael oversees all program implementations and ensures our initiatives meet their objectives.</p>
+                </div>
+                <div class="leader-card fade-in">
+                    <div class="leader-image">
+                        <img src="images/leaders/leader3.jpg" alt="Amanda Rodriguez">
+                    </div>
+                    <h3>Amanda Rodriguez</h3>
+                    <p class="role">Education Coordinator</p>
+                    <p>Amanda develops and implements our educational programs to ensure quality learning experiences.</p>
+                </div>
+                <div class="leader-card fade-in">
+                    <div class="leader-image">
+                        <img src="images/leaders/leader4.jpg" alt="David Okafor">
+                    </div>
+                    <h3>David Okafor</h3>
+                    <p class="role">Community Outreach Manager</p>
+                    <p>David builds relationships with communities and partners to expand our reach and impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs section">
+        <div class="container">
+            <h2 class="section-title">Our Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <div class="program-image">
+                        <img src="" alt="International Women's Day">
+                    </div>
+                    <div class="program-content">
+                        <h3>International Women's Day </h3>
+                        <p>We join the World to commemorate this day with activities solely focused on issues that concern women.
+For our communities, we carry out needs assessment on pressing needs of women before engaging.
+Some of the issues identified are- Reproductive Health Counselling, Emotional intelligence, Self Development, Self Love and Care, Parenting.</p>
+<p>Over the years, we have organized programs to address these concerns and more. We provide medical counseling and support to alleviate the cost of living of the women.
+Other Women that have excelled in different areas are brought in as role models and they encourage Women to aspire for more, be challenged by the change they want to champion within their communities.
+We have been commemorating this Day since 2017.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <span class="stat-number">350+</span>
+                                <span class="stat-label">Children</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Schools</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">95%</span>
+                                <span class="stat-label">Success</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-image">
+                        <img src="images/3.jpg" alt="School Campaign">
+                    </div>
+                    <div class="program-content">
+                        <h3>School Campaign</h3>
+                        <p>With our interest in holistic education of children we engage School Managers, Teachers, Parents and Children on different Social issues.
+We build capacity of stakeholders in the education sector so they can in turn use these relevant skills to better the lots of school children through policies, technics of handling situations as well as the children.
+Our society is bedevilled by contrary winds trying to derail the appropriate development and upbringing of our young ones. </p>
+<p>Some of our campaigns are- capacity building on teaching techniques, handling child sexual abuse, Child Protection, Cybersafety, Bullying.
+This was one of the earliest activities we engaged in as an NGO, we saw the need to intervene in order for to effect change that will secure our future.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <span class="stat-number">2,500+</span>
+                                <span class="stat-label">Check-ups</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">8</span>
+                                <span class="stat-label">Clinics</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Vaccinated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="program-card fade-in">
+                    <div class="program-image">
+                        <img src="images/education.jpg" alt="International Day of Education">
+                    </div>
+                    <div class="program-content">
+                        <h3>International Day of Education</h3>
+                        <p>Annually, Children Impact joins the World to give attention to Education.
+We visit selected Communities and engage their Leaders, Parents, Teachers and Children on the importance of Education and the need to ensure that no one is left behind.
+Attention is given also to providing learning materials to children.</p>
+<p>Educative activities are engaged in as we shine the torch on amplifying the transformation experienced by an educated mind as well as the achievements that would be enjoyed by all.
+Education is indeed the tool for change and transform. We have been commemorating this Day since 2021 to alleviate the impact of Covid-19 on Education as the post-Covid -19 effect was a massive drop out of school in many rural communities who had no access to technology.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Communities</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Families</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="program-card fade-in">
+                    <div class="program-image">
+                        <img src="images/11.jpg" alt="Monthly Girls Club Meeting">
+                    </div>
+                    <div class="program-content">
+                        <h3>Monthly Girls Club Meeting</h3>
+                        <p>The Girls Club was set up set up in 2023 when we discovered the need to pay more attention to Girls within the communities we serve.
+We noticed that more girls were dropping out of school and they could not make other healthy life choices.
+We gather them monthly to mentor and encourage them. They are also provided opportunity to engage in apprenticeship as well as receiving training for hands-on skills acquisition.</p>
+<p>This Club seeks to bridge the gaps that exist in modeling an inspiring and focused future for our Girls.
+Menstrual and Personal Health Hygiene is also largely focused on at our monthly meetings where menstrual and hygiene packs are distributed.
+</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Communities</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Families</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="program-card fade-in">
+                    <div class="program-image">
+                        <img src="images/healthcare.jpg" alt="Medical Outreach">
+                    </div>
+                    <div class="program-content">
+                        <h3>Medical Outreach </h3>
+                        <p>The rising cost of accessing health care has been a challenge for the communities where we work.
+We started this quarterly intervention in 2017 and it has really been helpful in alleviating healthcare poverty among the vulnerable communities where we work.
+Medical Personnel and Drugs are taken to Communities where they offer counseling, diagnosis and dispense the drugs.</p>
+<p>Common ailments of malaria, cold, cough, infections, pains are prevalent among these groups of people.
+For other cases, they are encouraged to visit the hospital and not involve in self medication.
+At the beginning of the School Term, we carry out deworming exercise for school pupils and counsel on diet and hygiene.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Communities</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Families</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="program-card fade-in">
+                    <div class="program-image">
+                        <img src="images/10.jpg" alt="Menstrual Hygiene Day">
+                    </div>
+                    <div class="program-content">
+                        <h3>Menstrual Hygiene Day</h3>
+                        <p>In several communities, we identified a "period poverty"- a situation where girls have to miss school during their menstrual flow, many others use unhygienic materials during their flow which leads to complications of infections.</p>
+<p>On this day, we provide information on Menstrual and Personal hygiene as well as counseling.
+We distribute sanitary pads, encourage solidarity and support among girls.
+We commenced this in 2019 as we saw the need to intervene in this area.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <span class="stat-number">15</span>
+                                <span class="stat-label">Communities</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Families</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">3</span>
+                                <span class="stat-label">Years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners section">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--red);">Our Partners</h2>
+            <div class="partners-grid">
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/beyond mentors.jpg" alt="Partner 1">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/oreva.jpg" alt="Partner 2">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/pew.jpg" alt="Partner 3">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/project impact.jpg" alt="Partner 4">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/rasam.jpg" alt="Partner 5">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/vafa.jpg" alt="Partner 6">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/wca.png" alt="Partner 7">
+                </div>
+                <div class="partner-logo fade-in">
+                    <img src="images/partners/wim.jpg" alt="Partner 8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CIDI</h3>
+                    <p>Empowering Children, Shaping Futures.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Healthcare</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Hope Street, City</p>
+                    <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> info@cidi.org</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CIDI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Fade-in animation on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        fadeInObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                fadeInObserver.observe(element);
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+
+            // Load leaders from backend API
+async function loadLeaders() {
+  try {
+    console.log('Loading leaders from API...');
+    
+    const response = await fetch('http://localhost:5000/api/leaders');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const leaders = await response.json();
+    console.log('Leaders loaded:', leaders);
+    
+    const leadersGrid = document.querySelector('.leadership-grid');
+    
+    if (leaders.length === 0) {
+      leadersGrid.innerHTML = `
+        <div class="no-data">
+          <p>No leaders found. Please add some leaders to the database.</p>
+        </div>
+      `;
+      return;
+    }
+    
+    leadersGrid.innerHTML = leaders.map(leader => `
+      <div class="leader-card fade-in">
+        <div class="leader-image">
+          <img src="${leader.image || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'}" 
+               alt="${leader.name}" 
+               onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400'">
+        </div>
+        <h3>${leader.name}</h3>
+        <p class="role">${leader.role}</p>
+        <p>${leader.description || 'Dedicated to making a difference in children\'s lives.'}</p>
+        ${leader.email ? `<p class="leader-email"><i class="fas fa-envelope"></i> ${leader.email}</p>` : ''}
+      </div>
+    `).join('');
+    
+  } catch (error) {
+    console.error('Failed to load leaders:', error);
+    const leadersGrid = document.querySelector('.leadership-grid');
+    leadersGrid.innerHTML = `
+      <div class="error-message">
+        <p>Failed to load leaders. Please make sure the backend server is running.</p>
+        <p>Error: ${error.message}</p>
+      </div>
+    `;
+  }
+}
+
+// Load volunteers from backend
+async function loadVolunteers() {
+  try {
+    const response = await fetch('http://localhost:5000/api/volunteers');
+    const volunteers = await response.json();
+    
+    const volunteersGrid = document.querySelector('.volunteers-grid');
+    
+    if (volunteers.length === 0) {
+      volunteersGrid.innerHTML = `
+        <div class="no-data">
+          <p>No volunteers found.</p>
+        </div>
+      `;
+      return;
+    }
+    
+    volunteersGrid.innerHTML = volunteers.map(volunteer => `
+      <div class="volunteer-card fade-in">
+        <div class="volunteer-image">
+          <img src="${volunteer.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80'}" 
+               alt="${volunteer.name}"
+               onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400'">
+        </div>
+        <h4>${volunteer.name}</h4>
+        <p>${volunteer.role}</p>
+        <div class="volunteer-desc">${volunteer.description || 'Committed volunteer'}</div>
+      </div>
+    `).join('');
+    
+  } catch (error) {
+    console.error('Failed to load volunteers:', error);
+  }
+}
+
+// Load all data when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Page loaded, fetching data from backend...');
+  loadLeaders();
+  loadVolunteers();
+});
+        });
+    </script>
+</body>
+</html>
