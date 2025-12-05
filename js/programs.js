@@ -56,10 +56,10 @@ document.querySelectorAll('.donate-dropdown').forEach(dropdown => {
 
 // Gallery Images Data
 const galleryImages = [
-    { url: 'images/gallery/community/1.jpg', alt: 'Community Health Program' },
+    { url: 'images/gallery/community/1.JPG', alt: 'Community Health Program' },
     { url: 'images/gallery/community/2.jpg', alt: 'Youth Training Session' },
     { url: 'images/gallery/community/3.jpg', alt: 'Women Empowerment Workshop' },
-    { url: 'images/gallery/community/4.jpg', alt: 'Rural Development Project' },
+    { url: 'images/gallery/community/4.JPG', alt: 'Rural Development Project' },
     { url: 'images/gallery/community/5.jpg', alt: 'Medical Camp' },
     { url: 'images/gallery/community/6.jpg', alt: 'Skills Training' },
     { url: 'images/gallery/community/7.jpg', alt: 'Community Meeting' },
